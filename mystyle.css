@@ -1,0 +1,32 @@
+.button-container{
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  padding: 2%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+button {
+  background-color: #4CAF50;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  display: flex;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 0px;
+}
+
+.result {
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}

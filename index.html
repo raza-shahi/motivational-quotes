@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mystyle.css">
+    <title>Quotes</title>
+</head>
+
+<body>
+    <div class="button-container">
+        <button onclick="get_quote()">Get Quotes</button>
+    </div>
+    <div id="result" class="result"></div>
+    <script>
+        function speak(text, voice, rate, pitch, volume) {
+            // create a SpeechSynthesisUtterance to configure the how text to be spoken 
+            let speakData = new SpeechSynthesisUtterance();
+            speakData.volume = volume; // From 0 to 1
+            speakData.rate = rate; // From 0.1 to 10
+            speakData.pitch = pitch; // From 0 to 2
+            speakData.text = text;
+            speakData.lang = 'en';
+            speakData.voice = voice;
+
+            // pass the SpeechSynthesisUtterance to speechSynthesis.speak to start speaking 
+            speechSynthesis.speak(speakData);
+
+        }
+        function get_quote() {
+            fetch('https://type.fit/api/quotes')
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (data) {
+                    var b = Math.floor(Math.random() * 1644);
+                    console.log(data[b].text);
+                    var a = data[b].text;
+                    document.getElementById("result").innerHTML = a;
+                    var v = 2;
+                    var r = .5;
+                    var p = 1;
+                    speak(a, undefined, r, p, v);
+                });
+
+        }
+    </script>
+</body>
+
+</html>
